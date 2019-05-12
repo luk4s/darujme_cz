@@ -1,0 +1,12 @@
+{
+  "firstName": "Jan",
+  "lastName": "Novák",
+  "email": "jan.novak@seznam.cz",
+  "address": {
+    "street": "Otakarova 34",
+    "city": "Praha",
+    "postCode": "120 00",
+    "country": "ČR"
+  },
+  "phone": "+420 123 456 789"
+}

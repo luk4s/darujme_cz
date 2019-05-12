@@ -1,0 +1,46 @@
+{
+  "transactions": [
+    {
+      "transactionId": 3,
+      "state": "refund",
+      "sentAmount": {
+        "cents": 124500,
+        "currency": "CZK"
+      },
+      "receivedAt": "2019-04-07T15:30:57+02:00",
+      "outgoingAmount": {
+        "cents": 124500,
+        "currency": "CZK"
+      },
+      "outgoingVs": "6432997",
+      "outgoingBankAccount": "12345/0100",
+      "pledge": {
+        "pledgeId": 1203450,
+        "organizationId": 2,
+        "projectId": 4563,
+        "promotionId": null,
+        "paymentMethod": "gp_webpay_charge",
+        "isRecurrent": true,
+        "pledgedAmount": {
+          "cents": 678200,
+          "currency": "CZK"
+        },
+        "pledgedAt": "2019-04-07T15:30:57+02:00",
+        "donor": {
+          "firstName": "Jan",
+          "lastName": "Novák",
+          "email": "jan.novak@seznam.cz",
+          "address": {
+            "street": "Otakarova 34",
+            "city": "Praha",
+            "postCode": "120 00",
+            "country": "ČR"
+          },
+          "phone": "+420 123 456 789"
+        },
+        "wantDonationCertificate": true,
+        "customFields": {}
+      }
+    }
+  ]
+}
