@@ -2,7 +2,7 @@ module DarujmeCz
   # @see https://www.darujme.cz/doc/api/v1/index.html#endpoint-get-organization-organizationid-pledges-by-filter
   class Pledge < Base
 
-    delegate :name, :address, :city, :street, :postal_code, :country, to: :donor
+    delegate :name, :address, :city, :street, :post_code, :postal_code, :country, to: :donor
 
     def self.endpoint
       "pledges"

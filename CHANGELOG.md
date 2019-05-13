@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - delegators in transaction and pledge
 - statuses methods in transaction
+- alias postal=post code in address
 ### Fixed
 - transaction without amount
 ## [0.1.0] - 2019-05-05

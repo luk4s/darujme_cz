@@ -26,4 +26,8 @@ RSpec.describe DarujmeCz::Donor do
     expect(subject.street).to eq "Otakarova 34"
   end
 
+  it "#postal_code" do
+    expect(subject.postal_code).to eq "120 00"
+  end
+
 end
