@@ -17,16 +17,32 @@ RSpec.describe DarujmeCz::Transaction do
     expect(subject.pledge).to be_a DarujmeCz::Pledge
   end
 
-  it "#sent_amount" do
-    expect(subject.sent_amount).to be_a Money
+  describe "#sent_amount" do
+    context "with amount" do
+      it { expect(subject.sent_amount).to be_a Money }
+    end
+    context "without amount" do
+      subject { described_class.new json["transactions"][1] }
+      it { expect(subject.sent_amount).to be_nil }
+    end
   end
 
-  it "#outgoing_amount" do
-    expect(subject.outgoing_amount).to be_a Money
+  describe "#outgoing_amount" do
+    context "with amount" do
+      it { expect(subject.outgoing_amount).to be_a Money }
+    end
+    context "without amount" do
+      subject { described_class.new json["transactions"][1] }
+      it { expect(subject.outgoing_amount).to be_nil }
+    end
   end
 
-  it "#received_at" do
-    expect(subject.received_at).to be_a Time
+  describe "#received_at" do
+    it { expect(subject.received_at).to be_a Time }
+    context "null" do
+      subject { described_class.new json["transactions"][1] }
+      it { expect(subject.received_at).to be_nil }
+    end
   end
 
   describe "#status" do

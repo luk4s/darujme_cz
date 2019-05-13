@@ -41,6 +41,42 @@
         "wantDonationCertificate": true,
         "customFields": {}
       }
+    },
+    {
+      "transactionId": 5,
+      "state": "success",
+      "sentAmount": null,
+      "receivedAt": null,
+      "outgoingAmount": null,
+      "outgoingVs": null,
+      "outgoingBankAccount": null,
+      "pledge": {
+        "pledgeId": 1342845,
+        "organizationId": 2,
+        "projectId": 1201275,
+        "promotionId": null,
+        "paymentMethod": "gp_webpay_charge",
+        "isRecurrent": true,
+        "pledgedAmount": {
+          "cents": 25000,
+          "currency": "CZK"
+        },
+        "pledgedAt": "2018-11-13T09:48:45+01:00",
+        "donor": {
+          "firstName": "Jan",
+          "lastName": "Novák",
+          "email": "jan.novak@seznam.cz",
+          "address": {
+            "street": "Otakarova 34",
+            "city": "Praha",
+            "postCode": "120 00",
+            "country": "ČR"
+          },
+          "phone": "+420 123 456 789"
+        },
+        "wantDonationCertificate": true,
+        "customFields": {}
+      }
     }
   ]
 }

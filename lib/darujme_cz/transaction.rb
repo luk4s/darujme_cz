@@ -15,15 +15,15 @@ module DarujmeCz
     end
 
     def sent_amount
-      @sent_amount ||= ::Money.new(*@source["sentAmount"].values)
+      @sent_amount ||= ::Money.new(*@source["sentAmount"].values) if @source["sentAmount"]
     end
 
     def outgoing_amount
-      @outgoing_amount ||= ::Money.new(*@source["outgoingAmount"].values)
+      @outgoing_amount ||= ::Money.new(*@source["outgoingAmount"].values) if @source["outgoingAmount"]
     end
 
     def received_at
-      @source["receivedAt"].to_time
+      @source["receivedAt"]&.to_time
     end
 
     def pledge
