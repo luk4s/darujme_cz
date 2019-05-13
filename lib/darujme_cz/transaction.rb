@@ -6,6 +6,8 @@ module DarujmeCz
       "transactions"
     end
 
+    delegate :name, :address, :city, :street, :postal_code, :country, to: :donor
+
     # @param [Hash] attributes
     def initialize(attributes)
       @id = attributes["transactionId"]
@@ -26,6 +28,20 @@ module DarujmeCz
 
     def pledge
       @pledge ||= Pledge.new(@source["pledge"])
+    end
+
+    def donor
+      @donor ||= pledge.donor
+    end
+
+    def status
+      @source["state"]
+    end
+
+    %w[pending pending_confirmation pending_update success success_money_on_account sent_to_organization failure error refund timeout canceled].each do |state|
+      define_method "#{state}?" do
+        status == state
+      end
     end
 
     %w[outgoingVs outgoingBankAccount].each do |m|

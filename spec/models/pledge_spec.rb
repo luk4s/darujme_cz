@@ -82,4 +82,12 @@ RSpec.describe DarujmeCz::Pledge do
     end
   end
 
+  it "#name" do
+    expect(subject.name).to eq "Jan Novák"
+  end
+
+  it "#city" do
+    expect(subject.city).to eq "Praha"
+  end
+
 end

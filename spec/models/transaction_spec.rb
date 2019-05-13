@@ -29,4 +29,10 @@ RSpec.describe DarujmeCz::Transaction do
     expect(subject.received_at).to be_a Time
   end
 
+  describe "#status" do
+    it { expect(subject.status).to eq "refund" }
+    it { expect(subject.refund?).to eq true }
+    it { expect(subject.pending?).to eq false }
+  end
+
 end
