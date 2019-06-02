@@ -9,7 +9,7 @@ module DarujmeCz
 
     # @param [String] app_id
     # @param [String] api_key
-    def initialize(app_id, api_key)
+    def initialize(app_id:, api_key:)
       @app_id = app_id
       @api_key = api_key
     end

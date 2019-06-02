@@ -1,5 +1,5 @@
 RSpec.describe DarujmeCz::Connection do
-  subject { described_class.new "22", "8d948b1" }
+  subject { described_class.new app_id: "22", api_key: "8d948b1" }
 
   describe ".get" do
     it "get all" do

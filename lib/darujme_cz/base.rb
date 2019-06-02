@@ -13,7 +13,11 @@ module DarujmeCz
     end
 
     def self.where(**params)
-      c = Connection.new DarujmeCz.config.app_id, DarujmeCz.config.app_secret
+      credentials = params.delete(:connection) || {
+        app_id: DarujmeCz.config.app_id,
+        api_key: DarujmeCz.config.app_secret
+      }
+      c = Connection.new credentials
       org = params.delete(:organization_id) || DarujmeCz.config.organization_id
       raise ArgumentError, "Missing organization ID" if org.nil?
 
