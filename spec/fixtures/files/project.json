@@ -1,0 +1,61 @@
+{
+  "projectId": 1201275,
+  "promotionId": null,
+  "organization": {
+    "organizationId": 434,
+    "name": "My organization",
+    "logo": {
+      "url": "https://s3.eu-central-1.amazonaws.com/uploads.darujme.cz/organization/logo/NF-square-200.jpg-1UjY2/RkTzbV6LLxuWZfmCZX.jpg"
+    }
+  },
+  "collectedAmountEstimate": {
+    "cents": 12345,
+    "currency": "CZK"
+  },
+  "donorsCount": 123,
+  "title": {
+    "cs": "Název projektu",
+    "en": "Name of project"
+  },
+  "synopsis": {
+    "cs": "Lorem Ipsum je demonstrativní výplňový text používaný v tiskařském a knihařském průmyslu. Lorem Ipsum je považováno za standard v této oblasti už od začátku 16. století, kdy dnes neznámý tiskař vzal kusy textu a na jejich základě vytvořil speciální vzorovou knihu. Jeho odkaz nevydržel pouze pět století, on přežil i nástup elektronické sazby v podstatě beze změny.",
+    "en": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+  },
+  "content": {
+    "cs": "Lorem Ipsum je demonstrativní výplňový text používaný v tiskařském a knihařském průmyslu. Lorem Ipsum je považováno za standard v této oblasti už od začátku 16. století, kdy dnes neznámý tiskař vzal kusy textu a na jejich základě vytvořil speciální vzorovou knihu. Jeho odkaz nevydržel pouze pět století, on přežil i nástup elektronické sazby v podstatě beze změny",
+    "en": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"
+  },
+  "targetAmount": null,
+  "activeUntil": null,
+  "imageHeader": {
+    "url": "https://s3.eu-central-1.amazonaws.com/uploads.darujme.cz/project/header/JogaSeniori-FondVedomi2019-C-AnnaSolcova.31.JPG-a828356b712c44353e2f648cd948389f.jpg"
+  },
+  "donateUrl": "https://www.darujme.cz/darovat/1201275",
+  "tags": [
+    {
+      "tagId": 1000010,
+      "label": {
+        "cs": "tag1",
+        "en": "the tag1"
+      }
+    }
+  ],
+  "suggestedAmounts": [
+    {
+      "primaryAmount": {
+        "cents": 10,
+        "currency": "CZK"
+      },
+      "secondaryAmount": {
+        "cents": 20,
+        "currency": "EUR"
+      },
+      "description": {
+        "cs": "Navzdory všeobecnému přesvědčení Lorem Ipsum není náhodný text.",
+        "en": "Contrary to popular belief, Lorem Ipsum is not simply random text."
+      },
+      "default": true
+    }
+  ],
+  "donationMatching": null
+}

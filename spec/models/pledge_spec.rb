@@ -90,4 +90,12 @@ RSpec.describe DarujmeCz::Pledge do
     expect(subject.city).to eq "Praha"
   end
 
+  describe "#project" do
+    before :each do
+      stub_request(:get, "https://www.darujme.cz/api/v1/project/4563?apiId=123&apiSecret=abcd").
+        to_return(status: 200, body: { project: JSON.parse(file_fixture("project.json").read) }.to_json)
+    end
+    it { expect(subject.project).to be_a DarujmeCz::Project }
+  end
+
 end

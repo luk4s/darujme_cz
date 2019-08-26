@@ -8,6 +8,8 @@ module DarujmeCz
       "pledges"
     end
 
+    define_attributes %w[organizationId projectId promotionId paymentMethod]
+
     # @param [Hash] attributes
     def initialize(attributes)
       @id = attributes["pledgeId"]
@@ -32,12 +34,6 @@ module DarujmeCz
       @source["pledgedAt"].to_time
     end
 
-    %w[organizationId projectId promotionId paymentMethod].each do |m|
-      define_method m.underscore do
-        @source[m]
-      end
-    end
-
     def donor
       @donor ||= Donor.new @source["donor"]
     end
@@ -46,6 +42,10 @@ module DarujmeCz
       @transactions ||= Array(@source["transactions"]).collect do |transaction_source|
         Transaction.new(transaction_source)
       end
+    end
+
+    def project
+      @project ||= Project.find project_id
     end
 
   end

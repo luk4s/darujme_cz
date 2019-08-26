@@ -13,16 +13,23 @@ module DarujmeCz
     end
 
     def self.where(**params)
+      data = connection(params).get "#{base_path(params)}/#{endpoint}-by-filter", params
+      data[endpoint].map { |i| new(i) }
+    end
+
+    def self.connection(params = {})
       credentials = params.delete(:connection) || {
         app_id: DarujmeCz.config.app_id,
         api_key: DarujmeCz.config.app_secret
       }
-      c = Connection.new credentials
+      Connection.new credentials
+    end
+
+    def self.base_path(params = {})
       org = params.delete(:organization_id) || DarujmeCz.config.organization_id
       raise ArgumentError, "Missing organization ID" if org.nil?
 
-      data = c.get "organization/#{org}/#{endpoint}-by-filter", params
-      data[endpoint].map { |i| new(i) }
+      "organization/#{org}"
     end
 
     attr_reader :id
@@ -30,6 +37,17 @@ module DarujmeCz
     # @param [Hash] attributes
     def initialize(attributes)
       @source = attributes
+    end
+
+    private
+
+    # @param [Array<String>] list
+    def self.define_attributes(list)
+      list.each do |attribute|
+        define_method attribute.underscore do
+          @source[attribute]
+        end
+      end
     end
 
   end

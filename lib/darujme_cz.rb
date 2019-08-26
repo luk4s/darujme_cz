@@ -12,6 +12,7 @@ module DarujmeCz
   autoload :Connection, "darujme_cz/connection"
   autoload :Donor, "darujme_cz/donor"
   autoload :Pledge, "darujme_cz/pledge"
+  autoload :Project, "darujme_cz/project"
   autoload :Transaction, "darujme_cz/transaction"
 
   include ActiveSupport::Configurable
