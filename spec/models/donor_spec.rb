@@ -29,5 +29,4 @@ RSpec.describe DarujmeCz::Donor do
   it "#postal_code" do
     expect(subject.postal_code).to eq "120 00"
   end
-
 end

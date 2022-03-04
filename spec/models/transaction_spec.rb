@@ -1,8 +1,8 @@
 RSpec.describe DarujmeCz::Transaction do
   describe ".all" do
     it "get all" do
-      stub_request(:get, "https://www.darujme.cz/api/v1/organization/#{DarujmeCz.config.organization_id}/transactions-by-filter?apiId=#{DarujmeCz.config.app_id}&apiSecret=#{DarujmeCz.config.app_secret}").
-        to_return(status: 200, body: file_fixture("transactions.json"))
+      stub_request(:get, "https://www.darujme.cz/api/v1/organization/#{DarujmeCz.config.organization_id}/transactions-by-filter?apiId=#{DarujmeCz.config.app_id}&apiSecret=#{DarujmeCz.config.app_secret}")
+        .to_return(status: 200, body: file_fixture("transactions.json"))
 
       pledges = described_class.all
       expect(pledges).to be_a Array
@@ -50,5 +50,4 @@ RSpec.describe DarujmeCz::Transaction do
     it { expect(subject.refund?).to eq true }
     it { expect(subject.pending?).to eq false }
   end
-
 end

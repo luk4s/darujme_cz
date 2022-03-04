@@ -4,7 +4,6 @@ require 'uri'
 
 module DarujmeCz
   class Connection
-
     URL = "https://www.darujme.cz/api/v1"
 
     # @param [String] app_id
@@ -16,16 +15,16 @@ module DarujmeCz
 
     # @param [String] path
     # @param [Hash] params
-    def get(path, **params)
+    def get(path, params = {})
       begin
         response = RestClient.get "#{URL}/#{path}", params: { apiId: @app_id, apiSecret: @api_key }.merge(params)
-      rescue RestClient::Exception => ex
-        handle_response_error(ex)
+      rescue RestClient::Exception => e
+        handle_response_error(e)
       end
       parse_response(response)
     end
 
-    def post(path, **data)
+    def post(path, data = {})
       # @todo
       raise NotImplementedError
     end
@@ -36,15 +35,14 @@ module DarujmeCz
     # @raise [RestClient::Exception]
     def handle_response_error(exception)
       data = parse_response(exception.response)
-      exception.message += "\n#{data["message"]}"
+      exception.message += "\n#{data['message']}"
       raise exception
     end
 
     def parse_response(response)
       JSON.parse(response.body)
-    rescue JSON::ParserError => _ex
+    rescue JSON::ParserError => _e
       {}
     end
-
   end
 end
