@@ -1,0 +1,23 @@
+name: ci
+on: [push]
+jobs:
+  # https://docs.knapsackpro.com/2021/how-to-run-ruby-on-rails-tests-on-github-actions-using-rspec
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
+        ruby: [ 2.6, 2.7, '3.0' ]
+    runs-on: ubuntu-latest
+    env:      # Rails verifies the time zone in DB is the same as the time zone of the Rails app
+      TZ: "Europe/Prague"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: RSpec
+        run: bundle exec rspec

@@ -16,7 +16,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  Dir.glob(File.expand_path('../support/*.rb', __FILE__)).each do |file|
+  Dir.glob(File.expand_path('support/*.rb', __dir__)).sort.each do |file|
     require file
   end
   config.before(:each) do
@@ -24,5 +24,4 @@ RSpec.configure do |config|
     DarujmeCz.config.app_secret = "abcd"
     DarujmeCz.config.organization_id = "2"
   end
-
 end

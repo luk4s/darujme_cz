@@ -1,6 +1,5 @@
 module DarujmeCz
   class Donor
-
     delegate :city, :street, :post_code, :postal_code, :country, to: :address
     # @param [Hash] attributes
     def initialize(attributes)
@@ -20,6 +19,5 @@ module DarujmeCz
         @source[m]
       end
     end
-
   end
 end

@@ -1,13 +1,12 @@
 module DarujmeCz
   class Address
-
     # @param [Hash] attributes
     def initialize(attributes)
       @source = attributes
     end
 
     def to_s
-      "#{@source["street"]}\n#{@source["postCode"]} #{@source["city"]}\n#{@source["country"]}"
+      "#{@source['street']}\n#{@source['postCode']} #{@source['city']}\n#{@source['country']}"
     end
 
     # alias
@@ -20,6 +19,5 @@ module DarujmeCz
         @source[m]
       end
     end
-
   end
 end

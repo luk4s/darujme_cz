@@ -14,5 +14,4 @@ RSpec.describe DarujmeCz::Project do
   it_behaves_like "localized attributes", "name", "title"
   it_behaves_like "localized attributes", "content"
   it_behaves_like "localized attributes", "synopsis"
-
 end

@@ -1,7 +1,6 @@
 module DarujmeCz
   # @see https://www.darujme.cz/doc/api/v1/index.html#endpoint-get-organization-organizationid-transactions-by-filter
   class Transaction < Base
-
     def self.endpoint
       "transactions"
     end

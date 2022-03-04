@@ -1,6 +1,5 @@
 module DarujmeCz
   class Base
-
     # @abstract Define name of endpoint, which is also name of root element
     def self.endpoint
       raise NotImplementedError
@@ -8,11 +7,11 @@ module DarujmeCz
 
     # @param [Hash] params
     # @option params [Integer] organization_id (nil) ID of organization
-    def self.all(**params)
+    def self.all(params = {})
       where params
     end
 
-    def self.where(**params)
+    def self.where(params = {})
       data = connection(params).get "#{base_path(params)}/#{endpoint}-by-filter", params
       data[endpoint].map { |i| new(i) }
     end
@@ -20,9 +19,9 @@ module DarujmeCz
     def self.connection(params = {})
       credentials = params.delete(:connection) || {
         app_id: DarujmeCz.config.app_id,
-        api_key: DarujmeCz.config.app_secret
+        api_key: DarujmeCz.config.app_secret,
       }
-      Connection.new credentials
+      Connection.new(**credentials)
     end
 
     def self.base_path(params = {})
@@ -39,8 +38,6 @@ module DarujmeCz
       @source = attributes
     end
 
-    private
-
     # @param [Array<String>] list
     def self.define_attributes(list)
       list.each do |attribute|
@@ -49,6 +46,5 @@ module DarujmeCz
         end
       end
     end
-
   end
 end

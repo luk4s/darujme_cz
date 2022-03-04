@@ -1,7 +1,6 @@
 module DarujmeCz
   # @see https://www.darujme.cz/doc/api/v1/index.html#endpoint-get-project-projectid
   class Project < Base
-
     def self.endpoint
       "project"
     end
@@ -43,7 +42,6 @@ module DarujmeCz
         value
       end
     end
-
   end
 end
 # project_id = 1201275

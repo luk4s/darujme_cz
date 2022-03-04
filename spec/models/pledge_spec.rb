@@ -2,8 +2,8 @@ require "rest-client"
 RSpec.describe DarujmeCz::Pledge do
   describe ".all" do
     it "get all" do
-      stub_request(:get, "https://www.darujme.cz/api/v1/organization/#{DarujmeCz.config.organization_id}/pledges-by-filter?apiId=#{DarujmeCz.config.app_id}&apiSecret=#{DarujmeCz.config.app_secret}").
-        to_return(status: 200, body: file_fixture("pledges.json"))
+      stub_request(:get, "https://www.darujme.cz/api/v1/organization/#{DarujmeCz.config.organization_id}/pledges-by-filter?apiId=#{DarujmeCz.config.app_id}&apiSecret=#{DarujmeCz.config.app_secret}")
+        .to_return(status: 200, body: file_fixture("pledges.json"))
 
       pledges = described_class.all
       expect(pledges).to be_a Array
@@ -18,15 +18,15 @@ RSpec.describe DarujmeCz::Pledge do
     it "without credentials" do
       DarujmeCz.config.app_id = nil
 
-      stub_request(:get, "https://www.darujme.cz/api/v1/organization/#{DarujmeCz.config.organization_id}/pledges-by-filter?apiId&apiSecret=#{DarujmeCz.config.app_secret}").
-        to_return(status: 400, body: darujme_cz_response_error(message: "Missing required parameter").to_json)
+      stub_request(:get, "https://www.darujme.cz/api/v1/organization/#{DarujmeCz.config.organization_id}/pledges-by-filter?apiId&apiSecret=#{DarujmeCz.config.app_secret}")
+        .to_return(status: 400, body: darujme_cz_response_error(message: "Missing required parameter").to_json)
 
       expect { described_class.all }.to raise_exception RestClient::BadRequest, "400 Bad Request\nMissing required parameter"
     end
 
     it "pass custom organization_id" do
-      stub = stub_request(:get, "https://www.darujme.cz/api/v1/organization/33/pledges-by-filter?apiId=#{DarujmeCz.config.app_id}&apiSecret=#{DarujmeCz.config.app_secret}").
-        to_return(status: 200, body: file_fixture("pledges.json"))
+      stub = stub_request(:get, "https://www.darujme.cz/api/v1/organization/33/pledges-by-filter?apiId=#{DarujmeCz.config.app_id}&apiSecret=#{DarujmeCz.config.app_secret}")
+               .to_return(status: 200, body: file_fixture("pledges.json"))
 
       described_class.all(organization_id: 33)
       expect(stub).to have_been_made
@@ -35,8 +35,8 @@ RSpec.describe DarujmeCz::Pledge do
 
   describe ".where" do
     it "fromOutgoingDate" do
-      stub = stub_request(:get, "https://www.darujme.cz/api/v1/organization/#{DarujmeCz.config.organization_id}/pledges-by-filter?apiId=#{DarujmeCz.config.app_id}&apiSecret=#{DarujmeCz.config.app_secret}&fromOutgoingDate=#{Date.today.strftime("%Y-%m-%d")}").
-        to_return(status: 200, body: file_fixture("pledges.json"))
+      stub = stub_request(:get, "https://www.darujme.cz/api/v1/organization/#{DarujmeCz.config.organization_id}/pledges-by-filter?apiId=#{DarujmeCz.config.app_id}&apiSecret=#{DarujmeCz.config.app_secret}&fromOutgoingDate=#{Date.today.strftime('%Y-%m-%d')}")
+               .to_return(status: 200, body: file_fixture("pledges.json"))
       described_class.where fromOutgoingDate: Date.today
 
       expect(stub).to have_been_made
@@ -47,10 +47,9 @@ RSpec.describe DarujmeCz::Pledge do
   subject { described_class.new json["pledges"][0] }
 
   describe "attributes" do
-
     it "inspect" do
       expect(subject.project_id).to eq 4563
-      expect(subject.id).to eq 1203450
+      expect(subject.id).to eq 1_203_450
     end
   end
 
@@ -92,10 +91,9 @@ RSpec.describe DarujmeCz::Pledge do
 
   describe "#project" do
     before :each do
-      stub_request(:get, "https://www.darujme.cz/api/v1/project/4563?apiId=123&apiSecret=abcd").
-        to_return(status: 200, body: { project: JSON.parse(file_fixture("project.json").read) }.to_json)
+      stub_request(:get, "https://www.darujme.cz/api/v1/project/4563?apiId=123&apiSecret=abcd")
+        .to_return(status: 200, body: { project: JSON.parse(file_fixture("project.json").read) }.to_json)
     end
     it { expect(subject.project).to be_a DarujmeCz::Project }
   end
-
 end
